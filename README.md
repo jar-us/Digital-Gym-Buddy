@@ -17,17 +17,11 @@ This project involves building a Telegram bot that functions as an automated wor
   - `python-telegram-bot` or `aiogram` for handling Telegram messaging.
   - `openai` for integrating OpenAI APIs (Whisper and GPT).
   - `gspread` and `google-auth` for interacting with Google Sheets.
-  - `python-dotenv` for managing environment variables securely.
 
 * **APIs:**
   - **Telegram Bot API** for receiving and sending messages.
   - **OpenAI API** for speech-to-text conversion (Whisper) and natural language processing (GPT).
   - **Google Sheets API** for reading and writing workout data.
 
-* **Environment Management:**
-  - `.env` files to securely store API tokens and credentials.
-
 * **Google Cloud Platform:**
   - Service account credentials for accessing Google Sheets.
-
-Let me know if you'd like to proceed with setting up any of these tools!
