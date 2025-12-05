@@ -1,7 +1,7 @@
 @startuml
 actor User
 participant Telegram
-participant "Python App" as App
+participant "Digital Gym Buddy" as App
 participant "OpenAI (Whisper/GPT)" as AI
 participant "Google Sheets" as DB
 

@@ -25,3 +25,7 @@ This project involves building a Telegram bot that functions as an automated wor
 
 * **Google Cloud Platform:**
   - Service account credentials for accessing Google Sheets.
+
+## Sequence Diagram
+
+![Gym Buddy Sequence Diagram](diagrams/diagram.svg)
