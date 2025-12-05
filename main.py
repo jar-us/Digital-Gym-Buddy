@@ -14,7 +14,7 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 # Define the message handler function
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # This sends a message back to the user
-    await update.message.reply_text(f'You said: {update.message.text}')
+    await update.message.reply_text(f'You said: _*{update.message.text}*_', parse_mode='MarkdownV2')
 
 # Set up the application
 # IMPORTANT: Replace 'YOUR_TOKEN_HERE' with your actual API token

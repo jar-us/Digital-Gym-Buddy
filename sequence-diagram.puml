@@ -1,0 +1,23 @@
+@startuml
+actor User
+participant Telegram
+participant "Python App" as App
+participant "OpenAI (Whisper/GPT)" as AI
+participant "Google Sheets" as DB
+
+alt Voice Note Input
+    User -> Telegram : Sends voice note 🎙️
+    Telegram -> App : Forwards audio file
+    App -> AI : Sends audio to Whisper 🗣️
+    AI --> App : Returns transcribed text 📝
+else Text Input
+    User -> Telegram : Sends text message 💬
+    Telegram -> App : Forwards text
+end
+App -> AI : Sends raw text to GPT Chat Completion Model🤖
+AI --> App : Returns details (Exercises, Sets, Reps, Weights) 📊
+App -> DB : Logs workout data to Google Sheets 📈
+DB --> App : Confirms data logged ✅
+App -> Telegram : Sends confirmation message to User 📩
+Telegram -> User : Delivers confirmation message ✅
+@enduml
