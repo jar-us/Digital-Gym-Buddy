@@ -1,0 +1,59 @@
+@startuml
+
+package "External Libraries" {
+    class "python-telegram-bot" as lib_tg
+    class "openai" as lib_ai
+    class "gspread" as lib_gs
+}
+
+class GymBuddyApp {
+    - bot: TelegramInterface
+    - ai: AIProcessor
+    - db: SheetManager
+    + main()
+    + handle_message(update)
+    - process_voice(voice_file)
+    - process_text(user_text)
+    - execute_logic(intent, text)
+}
+
+class TelegramInterface {
+    - api_token: str
+    + listen_for_messages()
+    + send_text(chat_id, message)
+    + download_file(file_id) : AudioFile
+}
+
+class AIProcessor {
+    - api_key: str
+    + transcribe_audio(audio_file) : str
+    + determine_intent(text) : IntentType
+    + extract_workout_data(text) : JSON
+    + generate_chat_response(text, history_context) : str
+}
+
+class SheetManager {
+    - credentials_json: str
+    - sheet_url: str
+    + log_workout(data: JSON) : bool
+    + get_workout_history(date_range) : List
+}
+
+' Relationships
+GymBuddyApp --> TelegramInterface : uses
+GymBuddyApp --> AIProcessor : uses
+GymBuddyApp --> SheetManager : uses
+
+' Dependencies on libraries
+TelegramInterface ..> lib_tg
+AIProcessor ..> lib_ai
+SheetManager ..> lib_gs
+
+note right of AIProcessor::determine_intent
+  Checks if user is:
+  1. Logging Workout
+  2. Querying History
+  3. General Chat
+end note
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+start
+
+:Receive Message;
+
+if (Is Voice Message?) then (yes)
+  :Call Whisper API;
+  :Convert Voice to Transcript;
+else (no)
+  :Use Original Text;
+endif
+
+:Determine Intent;
+
+if (Intent is 'Log Workout') then (yes)
+  :Call GPT to Format Data;
+  note right: Format: Exercise, Reps, Sets, Comments
+  :Append Row to Google Sheet;
+  note right: Include Date (YYYY-MM-DD)
+  :Prepare Confirmation Message;
+elseif (Intent is 'Query History') then (yes)
+  :Read Google Sheet;
+  :Find Row by Worked_Date;
+  :Generate Motivational Response;
+else (Unknown Intent)
+  :Set Message: "I can log or summarize workouts";
+endif
+
+:Send Response to User;
+
+stop
+@enduml

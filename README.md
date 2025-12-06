@@ -29,3 +29,9 @@ This project involves building a Telegram bot that functions as an automated wor
 ## Sequence Diagram
 
 ![Gym Buddy Sequence Diagram](diagrams/diagram.svg)
+
+## Class Diagram
+![Gym Buddy Class Diagram](diagrams/class-diagram.png)
+
+## Activity Diagram
+![Gym Buddy Activity Diagram](diagrams/activity-diagram.png)
